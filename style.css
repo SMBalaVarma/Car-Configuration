@@ -1,0 +1,229 @@
+*{
+ padding: 0;
+  margin : 0;
+  scrollbar-width: none;
+  }
+  canvas{
+    position: absolute;
+    z-index: -2;
+  }
+  
+  #bodybar , #rimbar {
+    position: absolute;
+    top: 76%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background-color: transparent;
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 12px;
+  }
+  
+  #render-window {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .color-button {
+    border: none;
+    width: 38px;
+    height: 38px;
+    margin-right: 12px;
+    border-radius: 50%;
+  }
+  
+  .color-button.selected {
+    outline: 3px solid white;
+  }
+
+  #carColor {
+    position: absolute;
+    top: -16%;
+    left: 8%;
+    width: 10%;
+    height: 50%;
+    transform: translate(-50%, 50%);
+    background-color: rgba(207, 200, 200, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* gap: 0px; */
+    align-items: center;
+    color: #fff;
+    box-shadow: #fff;
+  }
+  .btn-1,.btn-2,.btn-3,.btn-4,.btn-5 {
+  background-size: cover; 
+  background-color: transparent;
+  width: 60px;
+  height: 60px;
+  color: white; 
+  padding: 10px 20px; 
+  border: none;
+  cursor: pointer;
+  filter: drop-shadow(2px 2px 2px rgba(98, 98, 98, 0.5))
+  }
+.btn-1 {
+    background-image: url('./static/img/waterdrop.png');
+}  
+
+.btn-2 {
+    background-image: url('./static/img/pngwing.png');
+} 
+.btn-3 {
+  background-image: url('./static/img/search .png');
+} 
+.btn-4 {
+  width: 30px;
+  height: 30px;
+  transition: 1s;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 8px;
+  background-image: url('./static/img/lighton.png');
+}
+.btn-5 {
+  width: 30px;
+  height: 30px;
+  transition: 1s;
+  cursor: pointer;
+  padding: 0;
+  background-image: url('./static/img/headseton.png');
+}
+/* ---- model credit----- */
+  .model-credit{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: absolute;
+    font-size: 0.8rem;
+    color: white;
+    z-index: 10;
+    bottom: 0;
+    right: 0;
+  }
+  .model-credit a{
+    color: rgb(217, 217, 217);
+  }
+
+
+  /* -----------car anotations---------- */
+
+.hotspot{
+  background-color:rgba(45, 40, 40, 0.3);
+  border-radius: 0px 12px 12px 12px;
+  color: #fff;
+  padding: 6px;
+  width: 150px;
+  position: absolute;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition-duration: 0.2s;
+  transition-property: opacity, transfrom;
+}
+
+.hide{
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.show{
+  opacity: 1;
+  transform: translateY(-10px);
+}
+
+
+/* ------- progress bar ----- */
+.loader-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  position: absolute;
+  transition: opacity 1s; /* Smooth transition for fade effect */
+  opacity: 1;
+  z-index: 2;
+}
+.loader {
+  width: 10em;
+  height: 10em;
+  font-size: 30px;
+  box-sizing: border-box;
+  border-top: 0.3em solid hotpink;
+  border-radius: 50%;
+  position: relative;
+  animation: rotating 2s ease-in-out infinite;
+  --direction: 1;
+}
+
+.loader::before,
+.loader::after {
+  content: '';
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  box-sizing: border-box;
+  top: -0.2em;
+}
+
+.loader::before {
+  border-top: 0.3em solid dodgerblue;
+  transform: rotate(120deg);
+}
+
+.loader::after {
+  border-top: 0.3em solid gold;
+  transform: rotate(240deg);
+}
+
+.loader span {
+  position: absolute;
+  color: white;
+  width: inherit;
+  height: inherit;
+  text-align: center;
+  line-height: 10em;
+  font-family: cursive;
+  animation: rotating 2s linear infinite;
+  --direction: -1;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.loader-container button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family:cursive ;
+  background: none;
+  color: white;
+  padding: 0.5em 2em;
+  font-size: 36px;
+  border: 0px;
+  display: none;
+  opacity: 0;
+  z-index: 10; 
+  cursor: pointer; 
+  transition: color 0.3s, border-color 0.3s,opacity 1s; 
+}
+
+.loader-container button:hover {
+  color: #00fff3; /* Change color on hover */
+  border-color: #00fff3; /* Change border color on hover */
+}
+
+@keyframes rotating {
+  50% {
+      transform: rotate(calc(180deg * var(--direction)));
+  }
+
+  100% {
+      transform: rotate(calc(360deg * var(--direction)));
+  }
+}
